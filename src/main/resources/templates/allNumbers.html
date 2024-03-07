@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8"/>
+
+    <title>Приложение Гаишник</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Список всех добавленных номеров:</h1>
+    <a href="/number/home" class="btn btn-secondary">Вернуться назад</a>
+    <span th:if="${numbers.size() == 0}">Номера еще не добавлены</span>
+    <table th:if="${numbers.size() > 0}" class="table table-hover">
+        <tbody>
+        <tr th:each="number : ${numbers}">
+            <td th:text="${number}"/>
+        </tr>
+        </tbody>
+    </table>
+
+
+</div>
+</div>
+</body>
+</html>
