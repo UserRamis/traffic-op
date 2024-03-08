@@ -9,17 +9,14 @@
 </head>
 <body>
 <div class="container">
-
     <h1>Добавлен следующий по порядку номер:</h1>
     <span id="numberSpan" th:text="${number}"></span>
     <button id="nextButton" onclick="generateNextNumber()" class="btn btn-primary">Следующий номер</button>
     <a href="/number/home" class="btn btn-secondary">Вернуться назад</a>
 </div>
-
 <div>
     <h1>Ранее сгенерированные номера:</h1>
     <ul>
-        <!-- Используем Thymeleaf для вывода номеров -->
         <li th:each="number : ${numbers}" th:text="${number}"></li>
     </ul>
 </div>

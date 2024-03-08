@@ -64,17 +64,25 @@ public class NumberService {
     }
 
     public String addRandomNumber() {
-        while (true) {
-            carNumber.delete(0, carNumber.length());
-            carNumber.append(charExamples[randomizer.nextInt(MAX_CHAR_POSITION)]);
-            int randomDigits = randomizer.nextInt(999);
-            if (randomDigits < 10) carNumber.append(NUM_APPENDER_DOUBLE);
-            else if (randomDigits < 100) carNumber.append(NUM_APPENDER_SINGLE);
-            carNumber.append(randomDigits)
-                    .append(charExamples[randomizer.nextInt(MAX_CHAR_POSITION)])
-                    .append(charExamples[randomizer.nextInt(MAX_CHAR_POSITION)])
-                    .append(NUM_APPENDER_REG);
-            if (numberRepo.addNumber(carNumber.toString())) return carNumber.toString();
+        String generatedNumber = generateRandomNumber();
+        if (numberRepo.addNumber(generatedNumber)) {
+            return generatedNumber;
+        } else {
+            return addRandomNumber(); // рекурсивный вызов для генерации нового номера
         }
     }
+
+    private String generateRandomNumber() {
+        carNumber.delete(0, carNumber.length());
+        carNumber.append(charExamples[randomizer.nextInt(MAX_CHAR_POSITION)]);
+        int randomDigits = randomizer.nextInt(999);
+        if (randomDigits < 10) carNumber.append(NUM_APPENDER_DOUBLE);
+        else if (randomDigits < 100) carNumber.append(NUM_APPENDER_SINGLE);
+        carNumber.append(randomDigits)
+                .append(charExamples[randomizer.nextInt(MAX_CHAR_POSITION)])
+                .append(charExamples[randomizer.nextInt(MAX_CHAR_POSITION)])
+                .append(NUM_APPENDER_REG);
+        return carNumber.toString();
+    }
+
 }

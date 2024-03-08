@@ -1,39 +1,29 @@
 <!DOCTYPE html>
 
 <html xmlns:th="http://www.thymeleaf.org">
-
 <head>
     <meta charset="utf-8"/>
-
     <title>Приложение Гаишник</title>
-
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 </head>
-
 <body>
-
 <div class="container">
-
     <h1>Добавнен случайный номер:</h1>
     <span th:text="${number}"></span>
     <button id="nextButton" onclick="generateNextNumber()" class="btn btn-primary">Следующий номер</button>
     <a href="/number/home" class="btn btn-secondary">Вернуться назад</a>
 </div>
 </div>
-
 <div>
     <h1>Ранее сгенерированные номера:</h1>
     <ul>
-        <!-- Используем Thymeleaf для вывода номеров -->
         <li th:each="number : ${numbers}" th:text="${number}"></li>
     </ul>
 </div>
 
 <script>
     function generateNextNumber() {
-
         location.reload();
     }
 </script>

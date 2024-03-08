@@ -22,21 +22,21 @@ public class MainController {
         this.numberService = numberService;
     }
     // спустившись чуть ниже есть Get-запросы с html)
-    //   http://localhost:3081/number/next
+    //   http://localhost:3081/number/next    или с html:    http://localhost:3081/number/html/next
     @GetMapping("/next")
     @ResponseBody
     public String nextNumber() {
         return numberService.addNextNumber();
     }
 
-    //   http://localhost:3081/number/random
+    //   http://localhost:3081/number/random   или с html:    http://localhost:3081/number/html/random
     @GetMapping("/random")
     @ResponseBody
     public String randomNumber() {
         return numberService.addRandomNumber();
     }
 
-    //   http://localhost:3081/number//all
+    //   http://localhost:3081/number//all или с html:    http://localhost:3081/number/html/all
     @GetMapping("/all")
     @ResponseBody
     public String allNumbers() {
